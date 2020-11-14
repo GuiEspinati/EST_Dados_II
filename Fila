@@ -1,0 +1,56 @@
+class No:
+    def __init__(self, dado):
+        self.dado = dado
+        self.next = None
+        
+class fila:
+    
+    def init (self):
+        self.ini =  None
+        self.fim = None
+        self.tam = 0
+    
+    def insere (self,elemento):
+        no = No(elemento)
+        if self.fim is None:
+            self.fim = no
+        else:
+            self.last.next = no
+            self.last = no
+        if self.ini is None:
+            self.ini = no
+            
+        self.tam = self.tam+1
+        
+    def remove (self):
+        if self.tam is None:
+            dado = self.ini.dado
+            self.ini = self.ini.next
+            self.tam = self.tam-1
+            return dado
+        raise IndexError("Pilha Vazia")
+        
+    def primeiro(self):
+        if self.tam is None:
+            no = self.ini.dado
+            return no
+        raise IndexError("Pilha Vazia")
+    
+    def tamanho (self):
+        return self.tam
+    
+    def Rep (self):
+        if self.tam > 0:
+
+            r = ""
+
+            pointer = self.ini
+            while(pointer):
+                r = r + str(pointer.dado) + " -> "
+                pointer = pointer.next
+
+            return r
+        raise IndexError("Pilha Vazia")
+
+    def exibe (self):
+        return self.Rep()
