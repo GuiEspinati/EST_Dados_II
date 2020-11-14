@@ -1,0 +1,49 @@
+class No:
+    def __init__(self, dado):
+        self.dado = dado
+        self.next = None
+        
+class pilha:
+    
+    def init (self):
+        self.topo =  None
+        self.tam = 0
+    
+    def insere (self,elemento):
+        no = No(elemento)
+        no.next = self.topo
+        self.topo = no
+        self.tam=self.tam+1
+        
+    def remove (self):
+        if self.tam > 0:
+            no = self.topo
+            self.topo = self.topo.next
+            self.tam = self.tam-1
+            return no.dado
+        raise IndexError("Pilha Vazia")
+        
+    def primeiro(self):
+        if self.tam > 0:
+            no = self.topo.dado
+            return no
+        raise IndexError("Pilha Vazia")
+    
+    def tamanho (self):
+        return self.tam
+    
+    def Rep (self):
+        if self.tam > 0:
+
+            r = ""
+
+            pointer = self.topo
+            while(pointer):
+                r = r + str(pointer.dado) + "\n"
+                pointer = pointer.next
+
+            return r
+        raise IndexError("Pilha Vazia")
+
+    def exibe (self):
+        return self.Rep()
