@@ -1,0 +1,70 @@
+from abc import ABCMeta, abstractmethod
+
+class ListaBase(object):
+    __metaclass__ = ABCMeta
+
+    ini = None
+    tam = 0
+    items = []
+
+    def vazio(self):
+        return self.tam == 0
+
+    @abstractmethod
+    def insere(self, elemento=None):
+        pass
+
+    def tamanho(self):
+        return self.tam
+
+    def items_nulos(self):
+        return self.__len__() == 0
+
+    def remover(self):
+        if self.nulo():
+            raise Exception("A lista está vazia !")
+        else:
+            elemento = self.ini
+            dado = elemento.dado
+            self.ini = elemento.next
+            self.tam = self.tam - 1
+
+            del elemonto
+            return dado
+
+    def auxiliar(self, dado1, dado2):
+
+        aux = dado1
+        dado1 = dado2
+        dado2 = aux
+
+        return dado1, dado2
+
+    def bubble_sort(self):
+
+        self.items = self.exibir()
+
+        for i in range(self.tam - 1):
+            j = i + 1
+            while j < self.tam:
+                if self.items[i] > self.items[j]:
+                    self.items[i], self.items[j] = self.auxiliar(self.items[i], self.items[j])
+                j = j + 1
+            i = i + 1
+
+        return self.items
+
+    def exibir(self):
+        self.items = []
+
+        if self.nulo():
+            raise Exception("A lista está vazia !")
+        else:
+            elemento = self.ini
+
+            while elemento is not None:
+                dado = elemento.dado
+                elemento = elemento.next
+                self.items.append(dado)
+
+            return self.items
